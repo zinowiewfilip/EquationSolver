@@ -6,9 +6,6 @@ import pl.kurs.equationsolver.exceptions.InvalidEquationFormatException;
 import pl.kurs.equationsolver.exceptions.UnknownOperatorException;
 import pl.kurs.equationsolver.services.IOperationService;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 @ComponentScan(basePackages = "pl.kurs.equationsolver")
 public class Main {
     public static void main(String[] args) {

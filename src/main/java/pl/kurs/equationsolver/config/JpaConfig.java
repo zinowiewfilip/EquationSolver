@@ -25,11 +25,12 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean createEMF(JpaVendorAdapter adapter, DataSource ds) {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setJpaVendorAdapter(adapter);
-        emf.setPackagesToScan("pl.kurs.equationsolver.model");
+        emf.setPackagesToScan("pl.kurs.equationsolver.models");
         emf.setDataSource(ds);
         return emf;
     }
-    @Profile({"prod", "!prod & !dev"})
+
+    @Profile({"prod"})
     @Bean
     public JpaVendorAdapter createVendorAdapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
@@ -39,7 +40,7 @@ public class JpaConfig {
         return adapter;
     }
 
-    @Profile({"prod", "!prod & !dev"})
+    @Profile({"prod"})
     @Bean
     public DataSource createDateSource() {
         BasicDataSource dataSource = new BasicDataSource();
@@ -50,7 +51,7 @@ public class JpaConfig {
         return dataSource;
     }
 
-    @Profile("dev")
+    @Profile({"dev", "!prod & !dev"})
     @Bean
     public JpaVendorAdapter createVendorAdapter_dev() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
@@ -60,7 +61,7 @@ public class JpaConfig {
         return adapter;
     }
 
-    @Profile("dev")
+    @Profile({"dev", "!prod & !dev"})
     @Bean
     public DataSource createDateSource_dev() {
         BasicDataSource dataSource = new BasicDataSource();

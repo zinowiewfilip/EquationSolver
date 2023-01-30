@@ -15,8 +15,8 @@ import java.time.Instant;
 @Service
 public class OperationService implements IOperationService {
 
-    private IOperationEventDao operationEventDao;
-    private IInputValidator inputValidator;
+    private final IOperationEventDao operationEventDao;
+    private final IInputValidator inputValidator;
 
     public OperationService(IOperationEventDao operationEventDao, IInputValidator inputValidator) {
         this.operationEventDao = operationEventDao;
@@ -28,7 +28,7 @@ public class OperationService implements IOperationService {
 
         try {
             inputValidator.validateFormat(operation);
-        }catch (IOException e) {
+        } catch (IOException e) {
             throw new InvalidEquationFormatException("Invalid equation format");
         }
         try {

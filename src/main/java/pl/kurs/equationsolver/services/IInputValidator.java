@@ -4,7 +4,6 @@ import pl.kurs.equationsolver.exceptions.InvalidEquationFormatException;
 import pl.kurs.equationsolver.exceptions.UnknownOperatorException;
 
 import java.io.IOException;
-import java.util.InvalidPropertiesFormatException;
 
 public interface IInputValidator {
     String validateFormat(String stringToValidate) throws InvalidEquationFormatException, IOException;
